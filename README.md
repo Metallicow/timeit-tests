@@ -89,4 +89,26 @@ Winner: Test2
 Loser: Test1
 ```
 
+------------------------------------------
+## Concatenate strings
+In most cases, the 2nd test is cleaner, more elegant, pythonic, and faster despite what the timeit results show. Understand the difference between mutable vs. immutable objects and use your brain to come to a conclusion and avoid controversy.
+
+```python
+        def Test1():
+            string = "In" + "the" + "face" + "of" + "ambiguity," + "refuse" + "the" + "temptation" + "to" + "guess."
+        def Test2():
+            string = " ".join(["In", "the", "face", "of", "ambiguity,", "refuse", "the", "temptation", "to", "guess."])
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
+
+Test1:[0.096437667, 0.09655795599999983, 0.09860985600000038, 0.09880157999999994, 0.0983528549999999]
+Test2:[0.4058238170000008, 0.4115426979999999, 0.41353712200000015, 0.4117126640000004, 0.40883433700000005]
+
+Winner: Test1
+Loser: Test2
+```
+
 
