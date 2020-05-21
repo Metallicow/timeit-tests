@@ -5,6 +5,8 @@ timeit tests with python/wxPython/etc
 
 
 ------------------------------------------
+## Multiple assignment
+
 ```python
         def Test1():
             var0, var1, var2, var3 = [None for i in range(4)]
