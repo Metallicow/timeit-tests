@@ -111,4 +111,65 @@ Winner: Test1
 Loser: Test2
 ```
 
+------------------------------------------
+## Avoiding dots...
+
+```python
+        oldlist = ['Python', 'is', 'the', 'best!']
+        def Test1():
+            newlist = []
+            for word in oldlist:
+                newlist.append(str.upper(word))
+        def Test2():
+            newlist = []
+            for word in oldlist:
+                newlist.append(word.upper())
+        def Test3():
+            newlist = []
+            append = newlist.append
+            for word in oldlist:
+                append(word.upper())
+        def Test4():
+            upper = str.upper
+            newlist = []
+            append = newlist.append
+            for word in oldlist:
+                append(upper(word))
+        def Test5():
+            upper = str.upper
+            newlist = [upper(word) for word in oldlist]
+        def Test6():
+            newlist = [word.upper() for word in oldlist]
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+
+Test1:[1.8504736243791031, 1.8604523130268564, 1.86824649569688]
+Test2:[1.490703430630953, 1.4900399911158226, 1.486205097235354]
+Test3:[1.3632791154906148, 1.3778066344772597, 1.375073230831381]
+Test4:[1.5932545115734467, 1.6161903874347168, 1.6424483874026947]
+Test5:[1.4300836976571496, 1.415456005872425, 1.4217028472475661]
+Test6:[1.1478029108408734, 1.1512527142107025, 1.1565992320359157]
+
+Winner: Test6
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
+
+Test1:[0.8097238230000006, 0.7958117090000005, 0.7976915919999996, 0.7972740680000001, 0.7990106700000013]
+Test2:[0.7080931819999989, 0.7063077249999985, 0.7075434640000005, 0.6980598909999998, 0.6959985480000004]
+Test3:[0.6767243170000015, 0.6809196689999979, 0.682192766, 0.6770355100000032, 0.6747935269999985]
+Test4:[0.6477554930000018, 0.6499346619999997, 0.6517024649999996, 0.6465616300000008, 0.6448311869999976]
+Test5:[0.7440359209999983, 0.7518058819999993, 0.7511325889999974, 0.7383712319999987, 0.7484102700000008]
+Test6:[0.6913043859999988, 0.6930968220000011, 0.6919202019999986, 0.683555363, 0.6941917430000011]
+
+Winner: Test4
+Loser: Test1
+```
+
 
