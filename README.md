@@ -30,7 +30,7 @@ Loser: Test1
 ```
 
 ------------------------------------------
-# Square root
+## Square root
 
 ```python
 from math import sqrt
@@ -52,6 +52,39 @@ Winner: Test2
 Loser: Test1
 ```
 
+------------------------------------------
+## List comprehension
 
+```python
+        def Test1():
+            cube_numbers = []
+            for n in range(0, 10):
+                if n % 2 == 1:
+                    cube_numbers.append(n ** 3)
+        def Test2():
+            cube_numbers = [n ** 3 for n in range(1, 10) if n % 2 == 1]
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+
+Test1:[1.9607141992067465, 1.9515541358022919, 1.9185960536023]
+Test2:[1.4904776312910268, 1.5169179129079637, 1.5596855395228904]
+
+Winner: Test2
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
+
+Test1:[2.434065155999999, 2.440036932, 2.4267266780000014, 2.4286168229999987, 2.443524095000001]
+Test2:[2.2794151880000015, 2.289428361999999, 2.2601405449999987, 2.2175954340000033, 2.229053724]
+
+Winner: Test2
+Loser: Test1
+```
 
 
