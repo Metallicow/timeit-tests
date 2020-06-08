@@ -208,3 +208,53 @@ Winner: Test4
 Loser: Test3
 ```
 
+------------------------------------------
+## wx.Point() creation
+
+```python
+        def Test1():
+            border_points = [wx.Point(0, 0), wx.Point(0, 0), wx.Point(0, 0), wx.Point(0, 0), wx.Point(0, 0), wx.Point(0, 0)]
+        def Test2():
+            border_points = [wx.Point(), wx.Point(), wx.Point(), wx.Point(), wx.Point(), wx.Point()]
+        def Test3():
+            border_points = [wx.Point() for i in range(6)]
+        def Test4():
+            border_points = [wx.Point() for i in xrange(6)]
+        def Test5():
+            wxPoint = wx.Point
+            border_points = [wxPoint() for i in range(6)]
+        def Test6():
+            wxPoint = wx.Point
+            border_points = [wxPoint() for i in xrange(6)]
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+wxPython 4.0.7.post2 msw (phoenix) wxWidgets 3.0.5
+
+Test1:[5.072260522965598, 5.107448809219329, 5.075535369948506]
+Test2:[3.048939195078164, 3.035480588002738, 3.011435895393742]
+Test3:[3.6908186460599417, 3.6909738287300584, 3.6717032611761304]
+Test4:[3.6099861279830137, 3.686791696823967, 3.589700715030837]
+Test5:[3.4245194366294314, 3.432768339779436, 3.4454243486535816]
+Test6:[3.3247501169001694, 3.3719995451259237, 3.3495813968000334]
+
+Winner: Test2
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
+wxPython 4.0.7.post2 msw (phoenix) wxWidgets 3.0.5
+
+Test1:[5.187449170000001, 5.094413465000001, 5.132956241999999, 5.174223747999999, 5.118955317000001]
+Test2:[3.947080655999997, 3.9596147369999954, 3.9694856679999972, 4.0114383579999995, 4.041925595000002]
+Test3:[4.553662209000002, 4.6194235329999955, 4.5218846560000046, 4.600061825999994, 4.536709117000001]
+Test5:[4.458740910000003, 4.4787163679999935, 4.378479858999995, 4.373799335000001, 4.382705096999999]
+
+Winner: Test2
+Loser: Test1
+```
+
