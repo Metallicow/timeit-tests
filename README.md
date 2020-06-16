@@ -209,6 +209,46 @@ Loser: Test3
 ```
 
 ------------------------------------------
+## listdir vs scandir
+
+```python
+from os import listdir
+from os.path import isdir, isfile
+try:
+    from os import scandir
+except ImportError:  # Py2
+    from scandir import scandir
+cwd = os.getcwd()
+
+        def Test1():
+            names = [entry for entry in listdir(cwd) if isdir(entry)]
+        def Test2():
+            names = [entry.name for entry in scandir(cwd) if entry.is_dir()]
+```
+
+```
+Timeit Test - 1,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+
+Test1:[2.951790738222025, 2.918068476611139, 2.9157727583801725]
+Test2:[0.27461502997529763, 0.27016276527307426, 0.275030492573606]
+
+Winner: Test2
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000 times
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+
+Test1:[4.194652028, 4.156974660000001, 4.163746454999998, 4.173476572000002, 4.207648781000003]
+Test2:[0.27902377800000266, 0.2795090309999999, 0.27681468300000134, 0.279127643999999, 0.2777051350000015]
+
+Winner: Test2
+Loser: Test1
+```
+
+------------------------------------------
 ## wx.Point() creation
 
 ```python
