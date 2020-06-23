@@ -111,6 +111,8 @@ Winner: Test1
 Loser: Test2
 ```
 
+If it takes you that long, *Please take the trash out*
+
 ------------------------------------------
 ## Avoiding dots...
 This testcase involves a common operation UPPERCASE/lowercase, and explores numerous ways to write it.
