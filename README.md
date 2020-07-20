@@ -373,6 +373,46 @@ Loser: Test1
 ```
 
 ------------------------------------------
+## Copy a wx.Bitmap
+
+```python
+        def Test1():
+            width, height = 16, 16
+            bmp = wx.Bitmap.FromRGBA(width, height, red=0, green=0, blue=0, alpha=0)
+            bmp2 = wx.Bitmap.FromRGBA(width, height, red=0, green=0, blue=0, alpha=0)
+            bmp3 = wx.Bitmap.FromRGBA(width, height, red=0, green=0, blue=0, alpha=0)
+        def Test2():
+            width, height = 16, 16
+            bmp = wx.Bitmap.FromRGBA(width, height, red=0, green=0, blue=0, alpha=0)
+            bmp2 = wx.Bitmap(bmp)
+            bmp3 = wx.Bitmap(bmp)
+```
+
+```
+Timeit Test - 100,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+wxPython 4.0.7.post2 msw (phoenix) wxWidgets 3.0.5
+
+Test1:[4.759434204330338, 4.737403578550048, 4.7366428400466205]
+Test2:[1.8624360628641785, 1.855859554452742, 1.8591471928420802]
+
+Winner: Test2
+Loser: Test1
+```
+
+```
+Timeit Test - 100,000 times
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+wxPython 4.1.1a1.dev4883+75f1081f msw (phoenix) wxWidgets 3.1.4
+
+Test1:[4.314872253000001, 4.308401665000001, 4.327722699000001, 4.266783151999999, 4.2685681980000005]
+Test2:[1.714525178999999, 1.7218521620000011, 1.7107773199999983, 1.7168373639999999, 1.7189660360000012]
+
+Winner: Test2
+Loser: Test1
+```
+
+------------------------------------------
 ## when you rip the Phoenix eye out....
 
 ```
