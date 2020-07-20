@@ -335,6 +335,44 @@ Loser: Test1
 ```
 
 ------------------------------------------
+## wx.WHITE_BRUSH vs. wx.Brush(wx.WHITE) vs. wx.Brush(wx.Colour(255, 255, 255, 255))
+
+```python
+        def Test1():
+            brush = wx.Brush(wx.Colour(255, 255, 255, 255))
+        def Test2():
+            brush = wx.Brush(wx.WHITE)
+        def Test3():
+            brush = wx.WHITE_BRUSH
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+wxPython 4.0.7.post2 msw (phoenix) wxWidgets 3.0.5
+
+Test1:[2.0169423402911004, 2.0054959559338217, 2.0009840745778273]
+Test2:[1.1462756862144579, 1.1534602106666787, 1.154651199548729]
+Test3:[0.16463153037349976, 0.1656878607401051, 0.16686694383877843]
+
+Winner: Test3
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+wxPython 4.1.1a1.dev4883+75f1081f msw (phoenix) wxWidgets 3.1.4
+
+Test1:[2.033911366, 1.989101282, 1.988163599, 1.994561109000001, 1.9981611719999997]
+Test2:[1.113718295, 1.1125351069999994, 1.1136177120000017, 1.1261889879999991, 1.1216027980000014]
+Test3:[0.1162866600000001, 0.11877414799999997, 0.11967734499999949, 0.11697801700000099, 0.12001399100000043]
+
+Winner: Test3
+Loser: Test1
+```
+
+------------------------------------------
 ## when you rip the Phoenix eye out....
 
 ```
