@@ -301,6 +301,40 @@ Loser: Test1
 ```
 
 ------------------------------------------
+## wx.Colour(0, 0, 0, 0) vs. wx.TransparentColour
+
+```python
+        def Test1():
+            alpha = wx.Colour(0, 0, 0, 0)
+        def Test2():
+            alpha = wx.TransparentColour
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 2.7.18 (v2.7.18:8d21aa21f2, Apr 20 2020, 13:19:08) [MSC v.1500 32 bit (Intel)] on win32
+wxPython 4.0.7.post2 msw (phoenix) wxWidgets 3.0.5
+
+Test1:[0.9803480676297761, 0.937474110052956, 0.9405926042094743]
+Test2:[0.14566233309836507, 0.1466997784292663, 0.14581628719377004]
+
+Winner: Test2
+Loser: Test1
+```
+
+```
+Timeit Test - 1,000,000 times
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+wxPython 4.1.1a1.dev4883+75f1081f msw (phoenix) wxWidgets 3.1.4
+
+Test1:[0.9525082399999998, 0.9193547400000002, 0.9237221089999998, 0.914189682, 0.9188349899999997]
+Test2:[0.11545325499999848, 0.11635727400000029, 0.11458002700000058, 0.11509033399999957, 0.11579236500000079]
+
+Winner: Test2
+Loser: Test1
+```
+
+------------------------------------------
 ## when you rip the Phoenix eye out....
 
 ```
